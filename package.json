@@ -1,0 +1,23 @@
+{
+  "name": "ad-auris-iframe-distribution",
+  "version": "1.0.1",
+  "description": "script to conside with Ad-Auris's audio widget distribution",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\"",
+    "minify": "echo \"Minifiying: script-non-minfied.js to script.js\" && uglifyjs script-non-minified.js --output script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ad-Auris/iframe-distribution.git"
+  },
+  "author": "Nick Kao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ad-Auris/iframe-distribution/issues"
+  },
+  "homepage": "https://github.com/Ad-Auris/iframe-distribution#readme",
+  "dependencies": {
+    "np": "^7.4.0"
+  }
+}
