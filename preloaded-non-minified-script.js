@@ -21,11 +21,24 @@ const IFRAME_ID = "ad-auris-iframe";
 const SCRIPT_ID = "ad-auris-script";
 
 
-function myFunction() {
+function get_src_url() {
     return new Promise((resolve, reject) => {
         var parent_url = window.location.href;
         normalizeUrl(parent_url).then((response) => {
+
+
+
+            // check local storage here 
+            // if it exists can just resolve
+            //
             var normalized_parent_url = response
+            var localStorageReference = localStorage.getItem(normalized_parent_url)
+            if (localStorageReference) {
+                console.log("retrieved from localStorage") 
+                resolve(localStorageReference)
+                return;
+            }
+
             var iframe_element = document.getElementById(SCRIPT_ID);
             var orgId = iframe_element.getAttribute("data-org")
             var requestBody = {
@@ -43,6 +56,9 @@ function myFunction() {
                 var articleTitle = json.data.articleTitle;
                 var baseSrcURL = "https://narrations.ad-auris.com/widget/";
                 var builtSrcUrl = baseSrcURL + publisher + "/" + articleTitle;
+
+                // put into local storage
+                localStorage.setItem(normalized_parent_url, builtSrcUrl) 
                 resolve(builtSrcUrl)
             }).catch((error) => {
                 console.error(error)
@@ -53,7 +69,7 @@ function myFunction() {
 
 }
 
-var audio_src_url = myFunction()
+var audio_src_url = get_src_url()
 
 function revealStyling() {
     var iframe_element = document.getElementById(IFRAME_ID);
@@ -62,6 +78,8 @@ function revealStyling() {
 
 function iframeFunctionToCall() {
     iframe_element = document.getElementById(IFRAME_ID)
+
+
     audio_src_url.then((res) => {
         console.log(res)
         iframe_element.src = res;
