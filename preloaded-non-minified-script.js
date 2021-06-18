@@ -18,7 +18,7 @@ function normalizeUrl(url) {
 }
 
 const IFRAME_ID = "ad-auris-iframe";
-const SCRIPT_ID = 'ad-auris-script'
+const SCRIPT_ID = "ad-auris-script";
 
 
 function myFunction() {
@@ -39,12 +39,11 @@ function myFunction() {
             }).then((response) => {
                 return response.data
             }).then((json) => {
-                // var publisher = json.data.publisher;
-                // var articleTitle = json.data.articleTitle;
-                // var baseSrcURL = "https://narrations.ad-auris.com/widget/";
-                // var builtSrcUrl = baseSrcURL + publisher + "/" + articleTitle;
-                // resolve(builtSrcUrl)
-                resolve("https://narrations-ad-auris.herokuapp.com/widget/tomorrowland/slander5")
+                var publisher = json.data.publisher;
+                var articleTitle = json.data.articleTitle;
+                var baseSrcURL = "https://narrations.ad-auris.com/widget/";
+                var builtSrcUrl = baseSrcURL + publisher + "/" + articleTitle;
+                resolve(builtSrcUrl)
             }).catch((error) => {
                 console.error(error)
                 resolve(null)
