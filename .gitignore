@@ -1,3 +1,4 @@
+.DS_Store
 node_modules
 script-non-minified.js
 preloaded-non-minified-script.js
