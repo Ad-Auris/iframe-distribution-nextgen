@@ -5,7 +5,8 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
-    "minify": "echo \"Minifiying: script-non-minfied.js to script.js\" && uglifyjs script-non-minified.js --output script.js"
+    "minify": "echo \"Minifiying: script-non-minfied.js to script.js\" && uglifyjs script-non-minified.js --output script.js",
+    "minify-preload": "echo \"Minifiying: preloaded-non-minified-script.js to preload-script.js\" && uglifyjs preloaded-non-minified-script.js --output preload-script.js"
   },
   "repository": {
     "type": "git",
