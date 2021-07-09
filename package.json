@@ -1,6 +1,6 @@
 {
   "name": "ad-auris-iframe-distribution",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "script to conside with Ad-Auris's audio widget distribution",
   "main": "script.js",
   "scripts": {
