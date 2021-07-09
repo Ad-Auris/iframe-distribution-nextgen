@@ -2,5 +2,7 @@
 node_modules
 script-non-minified.js
 preloaded-non-minified-script.js
+newspack-preloaded-non-minified-script.js
+newspack-script-non-minified.js
 
 *.html
