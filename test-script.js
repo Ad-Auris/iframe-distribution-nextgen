@@ -5,5 +5,8 @@ button.addEventListener('click', () => {
   h1.textContent = 'Hello World!';
   document.body.appendChild(h1);
   console.log('hello')
+
+    console.log(window.location.href)
+    
 });
 
