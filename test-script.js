@@ -7,6 +7,6 @@ button.addEventListener('click', () => {
   console.log('hello')
 
     console.log(window.location.href)
-    
+    console.log(document.location.href)
 });
 
