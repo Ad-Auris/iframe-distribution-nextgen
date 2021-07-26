@@ -19,7 +19,7 @@ function normalizeUrl(url) {
 
 const IFRAME_ID = "ad-auris-iframe";
 const SCRIPT_ID = "ad-auris-script";
-
+const DYNAMIC_WIDGET_ROUTE = "https://dynamic-widget-service-l72twop3ra-uc.a.run.app"
 
 function get_src_url() {
     return new Promise((resolve, reject) => {
@@ -27,15 +27,14 @@ function get_src_url() {
         normalizeUrl(parent_url).then((response) => {
 
             var normalized_parent_url = response
-            var iframe_element = document.getElementById(SCRIPT_ID);
-            var orgId = iframe_element.getAttribute("data-org")
+            var script_element = document.getElementById(SCRIPT_ID);
+            var orgId = script_element.getAttribute("data-org")
             var requestBody = {
                 organisationId: orgId,
                 url: normalized_parent_url 
             }
-            var url_request = "https://us-central1-ad-auris-tts-app.cloudfunctions.net/dynamic-widget-data";
 
-            axios.post(url_request, requestBody).then((response) => {
+            axios.post(DYNAMIC_WIDGET_ROUTE, requestBody).then((response) => {
                 return response;
             }).then((response) => {
                 return response.data
