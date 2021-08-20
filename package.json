@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\"",
     "minify": "echo \"Minifiying: script-non-minfied.js to script.js\" && uglifyjs script-non-minified.js --output script.js",
     "minify-preload": "echo \"Minifiying: preloaded-non-minified-script.js to preload-script.js\" && uglifyjs preloaded-non-minified-script.js --output preload-script.js",
+    "minify-canonical": "echo \"Minifiying: canonical-url-script-non-minified.js to canonical-url-script.js\" && uglifyjs canonical-url-script-non-minified.js --output canonical-url-script.js",
     "minify-newspack": "echo \"Minifiying: newspack-script-non-minfied.js to newspack-script.js\" && uglifyjs newspack-script-non-minified.js --output newspack-script.js"
   },
   "repository": {
