@@ -18,7 +18,7 @@ function normalizeUrl(url) {
 }
 
 function getCanonicalUrl() {
-    const canonicalNode = document.querySelector('[rel=\"canonical\"]')
+    const canonicalNode = document.querySelector('link[rel=\"canonical\"]')
     // canonicalNode?.href
     if (canonicalNode) {
         canonicalUrl = canonicalNode.href
