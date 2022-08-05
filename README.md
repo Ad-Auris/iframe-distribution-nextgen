@@ -81,7 +81,23 @@ Outside of this, plain js is used
 The use case of this was meant to be a script 
 ```
 <script>
+
+<iframe 
+    style="width: 100%;
+    height: 100px;
+    border: none;
+    display: none" data-org=b716aa144485c0995f603a2510670284.28b6 allowfullscreen="false" allowtransparency allow="clipboard-read;
+    clipboard-write" frameborder="0" id="ad-auris-iframe" scrolling="no">
+</iframe>
+<script 
+    src="https://cdn.jsdelivr.net/npm/ad-auris-iframe-distribution@latest/script.js">
+</script>
 ```
+
+`https://cdn.jsdelivr.net/npm/ad-auris-iframe-distribution@latest/script.js`
+
+We deliver this script via a cdn attached to `npm`
+you can update this package using the [np](https://www.npmjs.com/package/np) package
 
 ### Scope of functionalities
 This is meant to render the correct widget for the given article it finds it self in
@@ -97,8 +113,20 @@ to the restrictive nature of AMP rules. Learn more from our [docs](https://adaur
 Axios is being used but instead can rely on more lower level network calls such as
 [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 
+This has only been tested manually, it would be good to create a "staging" area to test changes to 
+these scripts
+
 ### TODOs
 
-### Where is testing needed?
+Because this script is being used inside of clients websites, the speed of this flow is important.
+However there are no metrics on the speed outside of guessing that it is bad (by eye). 
 
-### What requires a refactor?
+All fault does not lie on this script, as it is simply the initiator to a bunch more other services
+that all contribute delay.
+
+### Where is testing needed?
+You can trial this by looking at the different `temp*.html` files.
+You will have to do some modification to the logic inside of whichever file you modify 
+
+A testing environment that emulates how a user will use this script in conjunction with 
+their website would be effective.
