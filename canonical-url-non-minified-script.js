@@ -12,65 +12,58 @@ function normalizeUrl(url) {
         return response.data.normalizedUrl;
     }).catch((error) => {
         console.error(error)
+        // ? Don't want to remove this because I guess its been working, but seems odd to return the unnormalized URL. Maybe its to attempt as a backup?
         return url
     })
 }
 
 function getCanonicalUrl() {
-    const canonicalNode = document.querySelector('link[rel=\"canonical\"]')
+    const canonicalNode = document.querySelector('link[rel=\"canonical\"]');
     // canonicalNode?.href
-    if (canonicalNode) {
-        canonicalUrl = canonicalNode.href
-        if (canonicalUrl) {
-            return canonicalUrl
-        }
+    if (canonicalNode?.href) {
+        return canonicalNode.href;
     }
-}
-
-
-function myFunction() {
-    const IFRAME_ID = "ad-auris-iframe";
-    const DYNAMIC_WIDGET_ROUTE = "https://dynamic-widget-service-l72twop3ra-uc.a.run.app"
-
-    var canonicalUrl = getCanonicalUrl()
-    if (!canonicalUrl) {
-        return 
-    }
-
-    normalizeUrl(canonicalUrl).then((response) => {
-        var normalizedParentUrl = response
-
-
-        var iframeElement = document.getElementById(IFRAME_ID);
-        var orgId = iframeElement.getAttribute("data-org")
-
-        var requestBody = {
-            organisationId: orgId,
-            url: normalizedParentUrl 
-        }
-
-        axios.post(DYNAMIC_WIDGET_ROUTE, requestBody).then((response) => {
-            return response;
-        }).then((response) => {
-            return response.data
-        }).then((json) => {
-            var publisher = json.data.publisher;
-            var articleTitle = json.data.articleTitle;
-            var baseSrcURL = "https://narrations.ad-auris.com/widget/";
-            var builtSrcUrl = baseSrcURL + publisher + "/" + articleTitle;
-            iframeElement.src = builtSrcUrl;
-            revealStyling();
-        }).catch((error) => {
-            console.error(error)
-        })
-        iframeElement.onload=null
-    })
 }
 
 function revealStyling() {
     const IFRAME_ID = "ad-auris-iframe";
     var iframeElement = document.getElementById(IFRAME_ID);
     iframeElement.style.display="inline";
+}
+
+function myFunction() {
+    // * id of the iframe
+    const IFRAME_ID = "ad-auris-iframe";
+
+    // * data attribute on the iframe that is used to identify the project attached to narrations
+    const IFRAME_ATTRIBUTE_PROJECT_IDENTIFIER = "data-project";
+
+    // * URLS to other services in our stack
+    const DYNAMIC_WIDGET_ROUTE = "https://dynamic-widget-service-l72twop3ra-uc.a.run.app";
+
+    var canonicalUrl = getCanonicalUrl()
+    if (!canonicalUrl) {
+        return;
+    }
+
+    normalizeUrl(canonicalUrl).then((response) => {
+        var normalizedParentUrl = response
+
+        var iframeElement = document.getElementById(IFRAME_ID);
+        // * this attribute should match
+        var projectId = iframeElement.getAttribute(IFRAME_ATTRIBUTE_PROJECT_IDENTIFIER);
+
+        axios.get(`${DYNAMIC_WIDGET_ROUTE}?project_id=${projectId}&location_href=${normalizedParentUrl}`).then((response) => {
+            const dynamicWidgetData = response.data;
+            if (dynamicWidgetData && dynamicWidgetData.narrationExists && dynamicWidgetData.audioWidgetUrl) {   
+                iframeElement.src = dynamicWidgetData.audioWidgetUrl;
+                revealStyling();
+            }
+        }).catch((error) => {
+            console.error(error)
+        })
+        iframeElement.onload=null
+    })
 }
 
 myFunction()
