@@ -4,6 +4,7 @@
   "description": "script to conside with Ad-Auris's audio widget distribution (nextgen). This is script is not meant for V1 of ad-auris distribution.",
   "main": "script.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "minify-canonical": "echo \"Minifiying: canonical-url-non-minified-script.production.js to canonical-url-script.js\" && uglifyjs canonical-url-non-minified-script.production.js --output canonical-url-script.production.js"
   },
   "repository": {
