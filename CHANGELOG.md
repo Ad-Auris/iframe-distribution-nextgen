@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated canonical-url-script to work with new V2/nextgen Architecture for New B2B revamp
 - Currently, the other scripts are not in use
 - Dynmamic Widget Service (DWS) and urlNormalization URLS now deployed and tied to the GCP project "ad-auris-b2b-production" and not "ad-auris-tts-app" which is legacy
+- removed unneeded scripts for now, if we need them we can retrive them from git history or original iframe-distribution repo
 
 
 ## [Unreleased]

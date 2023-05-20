@@ -133,8 +133,35 @@ A testing environment that emulates how a user will use this script in conjuncti
 their website would be effective.
 
 
-# V2 Iframe-distriubtion-nextgen High level notes
+# V2 Iframe-distriubtion-nextgen High level notes (Most Up to Date) 🆕
+
+## Description
 - V2 Must respect this data spec for V2 architecture https://www.notion.so/RSS-Auto-Sync-Distribution-V2-Architecture-b6e9b41a71814c69b511deacb9180d74#a26d03f748d84ad08623f11c6bc38d03
 
+## Usage
+1. Develop code in canonical-url-non-minified-script.production.js or canonical-url-non-minified-script.staging.js
+    - The main difference between the 2 is they interface with our production and staging firebase instnaces respectively via DWS (Dynamic Widget Service)
+2. Test Script using temp.html
+    - Recommend using the Live Server Extension for fatest development here
+3. When code is ready, run the script "minify-canonical" for cdn/npm distribution
+    - use => `npm install -g uglify-js` for the script command to work
 
-canonical-url-script.production
+
+
+## How to Publish 🚢 the Script 
+1. Commit and push the code to the main repo ✅
+2. Ensure to Build and bundle your code ✅
+    - via the script command in the npm package 
+3. Prepare for deployment with np: ✅
+    - Run np in your project directory.
+    - You will need to install => `npm install -g np`
+    - np will guide you through a series of prompts to publish your package on npm.
+    - Make sure to specify the correct version number when prompted.
+4. Set up CDN deployment: ✅
+ - Configure the CDN resource to point to your GitHub repository or directly to the bundled JavaScript file.
+    - We use => https://www.jsdelivr.com - This is free & open soruce and will work out of the box once the npm package is published
+5. Test 🧪 the deployment ✅
+    - Access the CDN URL similar to https://cdn.jsdelivr.net/npm/your-package-name@latest/your-script.js in a web browser or include it in your HTML file.
+    - V1 of the iframe is this URL https://cdn.jsdelivr.net/npm/ad-auris-iframe-distribution@latest/script.js (remember do not share this with publications as this is legacy)
+    - Verify that the bundled JavaScript file is being served correctly from the CDN.
+
