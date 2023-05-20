@@ -40,7 +40,7 @@ function myFunction() {
 
     // * URLS to other services in our stack
      // this should be usign the production DWS Endpoint
-    const DYNAMIC_WIDGET_ROUTE = "https://us-central1-ad-auris-b2b-production.cloudfunctions.net/normalizeUrlService";
+    const DYNAMIC_WIDGET_ROUTE = "https://dynamic-widget-service-nextgen-production-xa7fxewpsa-uc.a.run.app/api/v2/distribution/widget";
 
     var canonicalUrl = getCanonicalUrl()
     if (!canonicalUrl) {

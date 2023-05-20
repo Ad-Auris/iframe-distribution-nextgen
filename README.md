@@ -135,3 +135,6 @@ their website would be effective.
 
 # V2 Iframe-distriubtion-nextgen High level notes
 - V2 Must respect this data spec for V2 architecture https://www.notion.so/RSS-Auto-Sync-Distribution-V2-Architecture-b6e9b41a71814c69b511deacb9180d74#a26d03f748d84ad08623f11c6bc38d03
+
+
+canonical-url-script.production

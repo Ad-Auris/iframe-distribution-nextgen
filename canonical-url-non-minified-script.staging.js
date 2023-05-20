@@ -40,7 +40,7 @@ function myFunction() {
 
     // * URLS to other services in our stack
     // this should be usign the staging DWS Endpoint
-    const DYNAMIC_WIDGET_ROUTE = "https://dynamic-widget-service-nextgen-staging-xa7fxewpsa-uc.a.run.app";
+    const DYNAMIC_WIDGET_ROUTE = "https://dynamic-widget-service-nextgen-staging-xa7fxewpsa-uc.a.run.app/api/v2/distribution/widget";
 
     var canonicalUrl = getCanonicalUrl()
     if (!canonicalUrl) {
