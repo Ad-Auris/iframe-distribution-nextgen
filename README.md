@@ -157,6 +157,7 @@ their website would be effective.
     - You will need to install => `npm install -g np`
     - np will guide you through a series of prompts to publish your package on npm.
     - Make sure to specify the correct version number when prompted.
+    - The ad auris org on NPM is https://www.npmjs.com/org/ad-auris
 4. Set up CDN deployment: ✅
  - Configure the CDN resource to point to your GitHub repository or directly to the bundled JavaScript file.
     - We use => https://www.jsdelivr.com - This is free & open soruce and will work out of the box once the npm package is published
