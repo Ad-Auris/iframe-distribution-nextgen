@@ -1,7 +1,7 @@
 {
-  "name": "ad-auris-iframe-distribution",
+  "name": "ad-auris-iframe-distribution-nextgen",
   "version": "2.0.1",
-  "description": "script to conside with Ad-Auris's audio widget distribution",
+  "description": "script to conside with Ad-Auris's audio widget distribution (nextgen). This is script is not meant for V1 of ad-auris distribution.",
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
@@ -21,6 +21,9 @@
   },
   "homepage": "https://github.com/Ad-Auris/iframe-distribution#readme",
   "dependencies": {
+    "axios": "^1.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
     "np": "^7.4.0"
   }
 }
