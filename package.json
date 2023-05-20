@@ -7,19 +7,19 @@
     "test": "echo \"Error: no test specified\"",
     "minify": "echo \"Minifiying: script-non-minfied.js to script.js\" && uglifyjs script-non-minified.js --output script.js",
     "minify-preload": "echo \"Minifiying: preloaded-non-minified-script.js to preload-script.js\" && uglifyjs preloaded-non-minified-script.js --output preload-script.js",
-    "minify-canonical": "echo \"Minifiying: canonical-url-non-minified-script.js to canonical-url-script.js\" && uglifyjs canonical-url-non-minified-script.js --output canonical-url-script.js",
+    "minify-canonical": "echo \"Minifiying: canonical-url-non-minified-script.production.js to canonical-url-script.js\" && uglifyjs canonical-url-non-minified-script.production.js --output canonical-url-script.production.js",
     "minify-newspack": "echo \"Minifiying: newspack-script-non-minfied.js to newspack-script.js\" && uglifyjs newspack-script-non-minified.js --output newspack-script.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ad-Auris/iframe-distribution.git"
+    "url": "git+https://github.com/Ad-Auris/iframe-distribution-nextgen.git"
   },
-  "author": "Nick Kao",
+  "author": "Nick Kao, Varun Sharma, Griffin Cook",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Ad-Auris/iframe-distribution/issues"
+    "url": "https://github.com/Ad-Auris/iframe-distribution-nextgen/issues"
   },
-  "homepage": "https://github.com/Ad-Auris/iframe-distribution#readme",
+  "homepage": "https://github.com/Ad-Auris/iframe-distribution-nextgen#readme",
   "dependencies": {
     "axios": "^1.4.0",
     "cors": "^2.8.5",
