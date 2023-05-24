@@ -35,33 +35,45 @@ function revealStyling() {
     var iframeElement = document.getElementById(IFRAME_ID);
     iframeElement.style.display="inline";
 }
-
-function adaurisIframeDistribution() {
-    // * id of the iframe
+// by adding this listener, this ensures we wait for the iframe to load first before pre-maturely searching for it which would other wise brake rendering the available audio.
+document.addEventListener("DOMContentLoaded", function() {
     const IFRAME_ID = "ad-auris-iframe";
+
+    const iframeElement = document.getElementById(IFRAME_ID);
+    if (iframeElement) {
+    
+    // * id of the iframe
+    const IFRAME_ATTRIBUTE_PROJECT_IDENTIFIER = "data-project-id";
+
     console.log('ADAURIS RSS DISTRIBTUION IS ACTIVE')
 
     // * data attribute on the iframe that is used to identify the project attached to narrations
-    const IFRAME_ATTRIBUTE_PROJECT_IDENTIFIER = "data-project-id";
 
     // * URLS to other services in our stack
     // this should be usign the staging DWS Endpoint
     const DYNAMIC_WIDGET_ROUTE = "https://dynamic-widget-service-nextgen-staging-xa7fxewpsa-uc.a.run.app/api/v2/distribution/widget";
 
-    var canonicalUrl = getCanonicalUrl()
-    if (!canonicalUrl) {
-        return;
-    }
+    // var canonicalUrl = getCanonicalUrl()
+    // if (canonicalUrl) {
+    //     return;
+    // }
 
-    normalizeURL(canonicalUrl).then((response) => {
-        var normalizedParentUrl = response
 
-        var iframeElement = document.getElementById(IFRAME_ID);
+        var parent_url = window.location.href;
+        const normalizedParentUrl = normalizeURL(parent_url)
+     
+        console.log('normalizedParentUrl', normalizedParentUrl)
+
+        // var iframeElement = document.getElementById(IFRAME_ID);
+        // console.log("iframeElement", iframeElement)
         // * this attribute should match
         var projectId = iframeElement.getAttribute(IFRAME_ATTRIBUTE_PROJECT_IDENTIFIER);
+        console.log("projectId", projectId)
 
         fetch(`${DYNAMIC_WIDGET_ROUTE}?project_id=${projectId}&location_href=${normalizedParentUrl}`)
+      
         .then(response => {
+            
           if (response.ok) {
             return response.json(); // Parse the response body as JSON
           } else {
@@ -70,6 +82,7 @@ function adaurisIframeDistribution() {
         })
         .then(dynamicWidgetData => {
           if (dynamicWidgetData && dynamicWidgetData.narrationExists && dynamicWidgetData.audioWidgetUrl) {   
+            console.log(dynamicWidgetData)
             iframeElement.src = dynamicWidgetData.audioWidgetUrl;
             // insert the DWS build narration URL for the audio player to play
             revealStyling();
@@ -83,9 +96,12 @@ function adaurisIframeDistribution() {
         });
         
         iframeElement.onload=null
-    })
-}
+    } else {
+        console.error("iframeElement not found");
+      }
+ 
+    });
 
-adaurisIframeDistribution()
+
 
 
