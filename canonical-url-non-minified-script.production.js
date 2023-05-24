@@ -30,7 +30,6 @@ function getCanonicalUrl() {
         return canonicalNode.href;
     }
 }
-
 function revealStyling() {
     const IFRAME_ID = "ad-auris-iframe";
     var iframeElement = document.getElementById(IFRAME_ID);
@@ -61,15 +60,28 @@ function adaurisIframeDistribution() {
         // * this attribute should match
         var projectId = iframeElement.getAttribute(IFRAME_ATTRIBUTE_PROJECT_IDENTIFIER);
 
-        fetch(`${DYNAMIC_WIDGET_ROUTE}?project_id=${projectId}&location_href=${normalizedParentUrl}`).then((response) => {
-            const dynamicWidgetData = response.data;
-            if (dynamicWidgetData && dynamicWidgetData.narrationExists && dynamicWidgetData.audioWidgetUrl) {   
-                iframeElement.src = dynamicWidgetData.audioWidgetUrl;
-                revealStyling();
-            }
-        }).catch((error) => {
-            console.error(error)
+        fetch(`${DYNAMIC_WIDGET_ROUTE}?project_id=${projectId}&location_href=${normalizedParentUrl}`)
+        .then(response => {
+          if (response.ok) {
+            return response.json(); // Parse the response body as JSON
+          } else {
+            throw new Error('Request failed with status: ' + response.status);
+          }
         })
+        .then(dynamicWidgetData => {
+          if (dynamicWidgetData && dynamicWidgetData.narrationExists && dynamicWidgetData.audioWidgetUrl) {   
+            iframeElement.src = dynamicWidgetData.audioWidgetUrl;
+            // insert the DWS build narration URL for the audio player to play
+            revealStyling();
+            console.log(dynamicWidgetData);
+            return dynamicWidgetData; // Return the dynamicWidgetData
+          }
+        })
+        .catch(error => {
+          console.error(error);
+          throw error; // Rethrow the error to propagate it further
+        });
+        
         iframeElement.onload=null
     })
 }
