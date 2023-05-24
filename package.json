@@ -1,6 +1,6 @@
 {
   "name": "ad-auris-iframe-distribution-nextgen",
-  "version": "1.0.7-beta",
+  "version": "1.0.8-beta",
   "description": "script to conside with Ad-Auris's audio widget distribution (nextgen). This is script is not meant for V1 of ad-auris distribution.",
   "main": "script.js",
   "scripts": {
