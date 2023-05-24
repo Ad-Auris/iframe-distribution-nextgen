@@ -1,12 +1,12 @@
 {
   "name": "ad-auris-iframe-distribution-nextgen",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "script to conside with Ad-Auris's audio widget distribution (nextgen). This is script is not meant for V1 of ad-auris distribution.",
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "minify-canonical": "echo \"Minifiying: canonical-url-non-minified-script.production.js to canonical-url-script.js\" && uglifyjs canonical-url-non-minified-script.production.js --output canonical-url-script.production.js",
-    "minify-script": "echo \"Minifiying: script-non-minified.production.js to canonical-url-script.js\" && uglifyjs script-non-minified.production.js --output script.production.js"
+    "minify-script": "echo \"Minifiying: script-non-minified.staging.js to canonical-url-script.js\" && uglifyjs script-non-minified.staging.js --output script.staging.js"
 
   },
   "repository": {
