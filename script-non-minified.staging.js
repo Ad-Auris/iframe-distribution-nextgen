@@ -17,8 +17,8 @@ function normalizeUrl(url) {
     })
 }
 
- // this should be usign the staging DWS Endpoint
- const DYNAMIC_WIDGET_ROUTE = "https://dynamic-widget-service-nextgen-staging-xa7fxewpsa-uc.a.run.app/api/v2/distribution/widget";
+ // this should be usign the proudction DWS Endpoint
+ const DYNAMIC_WIDGET_ROUTE = "https://dynamic-widget-service-nextgen-proudction-xa7fxewpsa-uc.a.run.app/api/v2/distribution/widget";
 
 function myFunction() {
     var parent_url = window.location.href;
