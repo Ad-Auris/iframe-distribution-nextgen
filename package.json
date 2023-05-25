@@ -5,7 +5,7 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
-    "minify-canonical": "echo \"Minifiying: canonical-url-non-minified-script.production.js to canonical-url-script.js\" && uglifyjs canonical-url-non-minified-script.production.js --output canonical-url-script.production.js"
+    "minify-canonical": "echo \"Minifiying: location-href-non-minified-script.staging.js to location-href-script.js\" && uglifyjs location-href-non-minified-script.staging.js --output location-href-script.staging.js"
   },
   "repository": {
     "type": "git",

@@ -1,28 +1,24 @@
-function normalizeURL (url) {
-    let normalizedURL = url.trim();
+function normalizeURL(url) {
+  let normalizedURL = url.trim();
 
-    // Remove trailing slash from the hostname if present
-    if (normalizedURL.endsWith('/')) {
-        normalizedURL = normalizedURL.slice(0, -1);
-    }
+  // Remove query parameters and hash
+  const searchIndex = normalizedURL.indexOf('?');
+  if (searchIndex !== -1) {
+    normalizedURL = normalizedURL.slice(0, searchIndex);
+  }
+  const hashIndex = normalizedURL.indexOf('#');
+  if (hashIndex !== -1) {
+    normalizedURL = normalizedURL.slice(0, hashIndex);
+  }
 
-    // Remove query parameters and hash
-    const searchIndex = normalizedURL.indexOf('?');
-    if (searchIndex !== -1) {
-        normalizedURL = normalizedURL.slice(0, searchIndex);
-    }
-    const hashIndex = normalizedURL.indexOf('#');
-    if (hashIndex !== -1) {
-        normalizedURL = normalizedURL.slice(0, hashIndex);
-    }
+  // Add 'https://' protocol if 'http://' protocol is present
+  if (normalizedURL.startsWith('http://')) {
+    normalizedURL = 'https://' + normalizedURL.slice(7);
+  }
 
-    // Add 'https://' protocol if 'http://' protocol is present
-    if (normalizedURL.startsWith('http://')) {
-        normalizedURL = 'https://' + normalizedURL.slice(7);
-    }
+  return normalizedURL;
+}
 
-    return normalizedURL;
-};
 function getCanonicalUrl() {
     const canonicalNode = document.querySelector('link[rel=\"canonical\"]');
     // canonicalNode?.href
@@ -50,8 +46,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // * data attribute on the iframe that is used to identify the project attached to narrations
 
     // * URLS to other services in our stack
-    // this should be usign the staging DWS Endpoint
-    const DYNAMIC_WIDGET_ROUTE = "https://dynamic-widget-service-nextgen-staging-xa7fxewpsa-uc.a.run.app/api/v2/distribution/widget";
+    // this should be usign the production DWS Endpoint
+    const DYNAMIC_WIDGET_ROUTE = "https://dynamic-widget-service-nextgen-production-xa7fxewpsa-uc.a.run.app/api/v2/distribution/widget";
 
     // var canonicalUrl = getCanonicalUrl()
     // if (canonicalUrl) {
