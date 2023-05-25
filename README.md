@@ -166,3 +166,6 @@ their website would be effective.
     - V1 of the iframe is this URL https://cdn.jsdelivr.net/npm/ad-auris-iframe-distribution@latest/script.js (remember do not share this with publications as this is legacy)
     - Verify that the bundled JavaScript file is being served correctly from the CDN.
 
+
+## Test
+If you want to test the full distribution flow please follow these instructions: https://adauris.atlassian.net/wiki/spaces/AA/pages/154796046/WordPress+Self-Help+Sheet
