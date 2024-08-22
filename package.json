@@ -5,7 +5,8 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
-    "minify-canonical": "echo \"Minifiying: location-href-non-minified-script.staging.js to location-href-script.js\" && uglifyjs location-href-non-minified-script.staging.js --output location-href-script.staging.js"
+    "minify-canonical-staging": "echo \"Minifiying: location-href-non-minified-script.staging.js to location-href-script.js\" && uglifyjs location-href-non-minified-script.staging.js --output location-href-script.staging.js",
+    "minify-canonical-prod": "echo \"Minifiying: location-href-non-minified-script.production.js to location-href-script.js\" && uglifyjs location-href-non-minified-script.production.js --output location-href-script.production.js"
   },
   "repository": {
     "type": "git",
