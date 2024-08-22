@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const IFRAME_ATTRIBUTE_PROJECT_IDENTIFIER = "data-project-id";
     console.log("ADAURIS RSS DISTRIBTUION IS ACTIVE");
     const DYNAMIC_WIDGET_ROUTE =
-      "https://dynamic-widget-service-nextgen-production-xa7fxewpsa-uc.a.run.app/api/v2/distribution/widget";
+      "https://qw3ndmjqj5.us-east-1.awsapprunner.com/api/v2/distribution/widget";
     var parent_url = window.location.href;
     const normalizedParentUrl = normalizeURL(parent_url);
     console.log("normalizedParentUrl", normalizedParentUrl);
