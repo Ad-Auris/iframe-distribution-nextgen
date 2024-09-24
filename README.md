@@ -1,3 +1,5 @@
+[![](https://data.jsdelivr.com/v1/package/npm/ad-auris-iframe-distribution-nextgen/badge)](https://www.jsdelivr.com/package/npm/ad-auris-iframe-distribution-nextgen)
+
 # V1 Iframe-distriubtion High level notes
 - Please keep in mind this is for reference to help inform much of V1, but there is a separate V2 section below.
 
