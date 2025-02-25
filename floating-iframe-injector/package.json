@@ -1,0 +1,21 @@
+{
+  "name": "adauris-floating-iframe-injector",
+  "version": "1.0.0",
+  "description": "script to inject a floating iframe with the adauris widget into the page",
+  "main": "floating-iframe-injector.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\"",
+    "minify": "uglifyjs floating-iframe-injector.js --output floating-iframe-injector.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ad-Auris/iframe-distribution-nextgen.git"
+  },
+  "author": "Griffin Cook",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ad-Auris/iframe-distribution-nextgen/issues"
+  },
+  "homepage": "https://github.com/Ad-Auris/iframe-distribution-nextgen#readme",
+  "dependencies": {}
+}
