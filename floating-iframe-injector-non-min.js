@@ -1,0 +1,109 @@
+(function () {
+  function getProjectIdQueryParam() {
+    var params = new URLSearchParams(window.location.search);
+    return params.get("projectId");
+  }
+
+  function getEnvironmentQueryParam() {
+    var params = new URLSearchParams(window.location.search);
+    return params.get("environment");
+  }
+
+  function normalizeURL(url) {
+    let normalizedURL = url.trim();
+
+    // Remove query parameters and hash
+    const searchIndex = normalizedURL.indexOf("?");
+    if (searchIndex !== -1) {
+      normalizedURL = normalizedURL.slice(0, searchIndex);
+    }
+    const hashIndex = normalizedURL.indexOf("#");
+    if (hashIndex !== -1) {
+      normalizedURL = normalizedURL.slice(0, hashIndex);
+    }
+
+    // Add 'https://' protocol if 'http://' protocol is present
+    if (normalizedURL.startsWith("http://")) {
+      normalizedURL = "https://" + normalizedURL.slice(7);
+    }
+
+    return normalizedURL;
+  }
+
+  function createIframeElement(iframeUrl) {
+    iframeElement.onload = null;
+
+    // * this is the iframe url that will be injected into the page
+    var iframe = document.createElement("iframe");
+    iframe.src = iframeUrl;
+    iframe.width = "100%";
+    iframe.height = "100px";
+    iframe.allowTransparency = true;
+    iframe.allowFullscreen = false;
+
+    // Floating styles
+    Object.assign(iframe.style, {
+      position: "fixed",
+      bottom: "20px",
+      right: "20px",
+      width: "300px",
+      height: "100px",
+      boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.1)",
+      borderRadius: "10px",
+      zIndex: "1000",
+      border: "none",
+    });
+
+    document.body.appendChild(iframe);
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const environment = getEnvironmentQueryParam();
+    let dynamicWidgetRoute;
+
+    if (environment === "staging") {
+      dynamicWidgetRoute =
+        "https://bvprznavt5.us-east-1.awsapprunner.com/api/v2/distribution/widget";
+    } else {
+      // this should be usign the production DWS Endpoint
+      dynamicWidgetRoute =
+        "https://qw3ndmjqj5.us-east-1.awsapprunner.com/api/v2/distribution/widget";
+    }
+
+    const projectId = getProjectIdQueryParam();
+
+    if (!projectId) {
+      console.log("No projectId found to load Adauris Widget");
+      return;
+    }
+
+    const parent_url = window.location.href;
+    const normalizedParentUrl = normalizeURL(parent_url);
+
+    fetch(
+      `${dynamicWidgetRoute}?project_id=${projectId}&location_href=${normalizedParentUrl}`
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json(); // Parse the response body as JSON
+        } else {
+          throw new Error("Request failed with status: " + response.status);
+        }
+      })
+      .then((dynamicWidgetData) => {
+        if (
+          dynamicWidgetData &&
+          dynamicWidgetData.narrationExists &&
+          dynamicWidgetData.audioWidgetUrl
+        ) {
+          createIframeElement(dynamicWidgetData.audioWidgetUrl);
+
+          return;
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        throw error; // Rethrow the error to propagate it further
+      });
+  });
+})();
