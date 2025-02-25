@@ -31,14 +31,12 @@
   }
 
   function createIframeElement(iframeUrl) {
-    iframeElement.onload = null;
-
     // * this is the iframe url that will be injected into the page
     var iframe = document.createElement("iframe");
     iframe.src = iframeUrl;
     iframe.width = "100%";
     iframe.height = "100px";
-    iframe.allowTransparency = true;
+    iframe.allow = "transparency";
     iframe.allowFullscreen = false;
 
     // Floating styles
@@ -97,8 +95,10 @@
           dynamicWidgetData.audioWidgetUrl
         ) {
           createIframeElement(dynamicWidgetData.audioWidgetUrl);
-
-          return;
+        } else {
+          console.log(
+            "Widget not created: narration doesn't exist or missing audio widget URL"
+          );
         }
       })
       .catch((error) => {
