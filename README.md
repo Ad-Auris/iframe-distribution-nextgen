@@ -1,3 +1,5 @@
+[![](https://data.jsdelivr.com/v1/package/npm/ad-auris-iframe-distribution-nextgen/badge)](https://www.jsdelivr.com/package/npm/ad-auris-iframe-distribution-nextgen)
+
 # V1 Iframe-distriubtion High level notes
 - Please keep in mind this is for reference to help inform much of V1, but there is a separate V2 section below.
 
@@ -153,8 +155,8 @@ their website would be effective.
 2. Ensure to Build and bundle your code ✅
     - via the script command in the npm package 
 3. Prepare for deployment with np: ✅
-    - Run np in your project directory.
-    - You will need to install => `npm install -g np`
+    - Run [np](https://www.npmjs.com/package/np) in your project directory.
+    - You will need to install => `npm install -g [np](https://www.npmjs.com/package/np)`
     - np will guide you through a series of prompts to publish your package on npm.
     - Make sure to specify the correct version number when prompted.
     - The ad auris org on NPM is https://www.npmjs.com/org/ad-auris
